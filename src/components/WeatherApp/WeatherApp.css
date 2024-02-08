@@ -1,8 +1,8 @@
 .container {
   width : 400px;
-  height : 580px;
+  height : 590px;
   margin :auto;
-  margin-top: 70px;
+  margin-top: 60px;
   border-radius: 25px;
   padding : 30px;
   background-image: linear-gradient(180deg, #6154ab 0%, #7ccbeb 100%);
@@ -98,4 +98,11 @@
 
 .icon {
   margin-top: 10px;
+}
+
+.error {
+  color : rgb(255, 70, 70);
+  
+  text-align : left;
+  margin-left: 40px;
 }

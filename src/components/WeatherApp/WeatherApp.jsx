@@ -22,6 +22,8 @@ function WeatherApp() {
     image: cloud_icon
   })
   const [city, setCity] = useState('')
+  const [error, setError] = useState('')
+
 
   const handleClick =()=> {
     if(city!== ''){
@@ -46,8 +48,16 @@ function WeatherApp() {
         console.log(res.data)
           setData({...data, celsius : res.data.main.temp, city : res.data.name ,
           humidity : res.data.main.humidity , windspeed : res.data.wind.speed, image : imagePath})
+          setError('')
+        })
+      .catch(err => {
+        if(err.response.status == 404){
+          setError('no results found')
+        }else {
+          setError('')
+        }
+        console.log(err)
       })
-      .catch(err => console.log(err))
     }
   }
 
@@ -59,6 +69,9 @@ function WeatherApp() {
           <img src={search_icon} onClick={handleClick} alt=''/>
         </div>
       </div>  
+      <div className="error">
+          <p>{error}</p>
+        </div>
       <div className='weather-image'>
         <img src={data.image} alt =''/>
       </div> 
